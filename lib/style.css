@@ -4,16 +4,13 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-areas: 'sidebar main';
+  font-family: 'Quicksand', sans-serif;
+  font-size: 26px;
 }
 
 .sidebar {
   height: 100%;
-  width: 200px;
+  width: 15%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -21,13 +18,13 @@ body {
   background-color: rgba(37,40,43,0.9);
   overflow-x: hidden;
   padding-top: 20px;
-  grid-area: sidebar;
+  display: inline-block;
 }
 
 .sidebar a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1em;
   color: #818181;
   display: block;
 }
@@ -38,20 +35,56 @@ body {
 
 .main {
   height: 100%;
-  width: 100%;
-  margin-left: 200px;
+  width: 85%;
+  margin-left: 15%;
   position: fixed;
   padding: 10px 10px;
   background-color: rgba(0,0,0,0.6);
-  grid-area: main;
-}
-
-.wrapper {
-  display: flex;
-  flex-flow: row wrap;
+  display: inline-grid;
   justify-content: center;
+  grid-template-columns: 47% 47%;
+  grid-template-rows: 75px auto;
+  grid-template-areas:
+    "search-bar search-bar"
+    "current-summary current-detailed"
+    "hourly hourly"
+    "daily daily";
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
 }
 
-.wrapper > * {
-  flex: 1 100%;
+.main-items {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(37,40,43,0.7);
+  align-self: start;
+}
+
+.main-items h1 {
+  color: #f69547;
+}
+
+#search-bar {
+  grid-area: search-bar;
+}
+
+#current-summary {
+  grid-area: current-summary;
+}
+
+#current-detailed {
+  grid-area: current-detailed;
+}
+
+#hourly {
+  grid-area: hourly;
+}
+
+#daily {
+  grid-area: daily;
+}
+
+#location-search-field {
+  width: 90%;
 }

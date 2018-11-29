@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel='stylesheet' type='text/css' href='lib/reset.css'>
   <link rel='stylesheet' type='text/css' href='lib/style.css'>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet"> 
   <title>Sweater Weather</title>
 </head>
 <body>
@@ -14,19 +15,25 @@
   </div>
 
   <div class="main">
-    <div class="wrapper">
-      <section class="search-bar">
-        <input type="text" size="100">
-      </section>
+    <section id="search-bar" class="main-items">
+      <input type="text" id="location-search-field">
+    </section>
 
-      <section class="current-weather-summary">
-        <h1>Denver, CO</h1>
-        
-      </section>
+    <section id="current-summary" class="main-items">
+      <h1>Current Summary</h1>
+    </section>
 
-      <section class="current-weather-detailed">
-      </section>
-    </div>
+    <section id="current-detailed" class="main-items">
+      <h1>Current Detailed</h1>
+    </section>
+
+    <section id="hourly" class="main-items">
+      <h1>Hourly Forecast</h1>
+    </section>
+
+    <section id="daily" class="main-items">
+      <h1>Daily Forecast</h1>
+    </section>
   </div>
   <script
     src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
