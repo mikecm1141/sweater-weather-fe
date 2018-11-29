@@ -2,13 +2,33 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Quantified Self - Diary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' type='text/css' href='lib/reset.css'>
+  <link rel='stylesheet' type='text/css' href='lib/style.css'>
+  <title>Sweater Weather</title>
 </head>
 <body>
-      <!--  the a tag below can link you to another HTML page  -->
-      <!--  if you click the button in the browser right now, you'll get an error because that is not a real file path -->
-      <a href="<file path"><button class="default-button">GO TO OTHER PAGE</button></a>
-    <script
+  <div class="sidebar">
+    <a href="#">Login</a>
+    <a href="#">Register</a>
+  </div>
+
+  <div class="main">
+    <div class="wrapper">
+      <section class="search-bar">
+        <input type="text" size="100">
+      </section>
+
+      <section class="current-weather-summary">
+        <h1>Denver, CO</h1>
+        
+      </section>
+
+      <section class="current-weather-detailed">
+      </section>
+    </div>
+  </div>
+  <script
     src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
   </script>
   <script src="main.bundle.js"></script>
