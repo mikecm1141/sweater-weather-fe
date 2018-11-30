@@ -70,8 +70,10 @@ dl dt {
 }
 
 .daily-container {
+  margin: 15px 0 15px 0;
   display: grid;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   grid-template-rows: auto auto auto auto auto auto auto;
   grid-template-areas:
     "daily-day daily-status daily-precip daily-high daily-low";
@@ -79,14 +81,18 @@ dl dt {
 
 .daily-day {
   grid-area: daily-day;
+  text-align: center;
+  color: #f69547;
 }
 
 .daily-status {
   grid-area: daily-status;
+  text-align: center;
 }
 
 .daily-precip {
   grid-area: daily-precip;
+  text-align: center;
 }
 
 .daily-high {
@@ -95,6 +101,14 @@ dl dt {
 
 .daily-low {
   grid-area: daily-low;
+}
+
+.daily-high h5 {
+  display: inline;
+}
+
+.daily-low h5 {
+  display: inline;
 }
 
 .hourly-item {
@@ -141,7 +155,7 @@ dl dt {
   display: inline-grid;
   justify-content: center;
   grid-template-columns: 45% 45%;
-  grid-template-rows: 75px 175px 440px 150px;
+  grid-template-rows: 75px 175px 440px 460px;
   grid-template-areas:
     "search-bar search-bar"
     "current-summary current-detailed"
