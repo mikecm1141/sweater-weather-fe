@@ -41,6 +41,70 @@ strong {
   font-weight: 700;
 }
 
+dl dd {
+  padding: 0 1%;
+  float: right;
+  width: 40%;
+  font-size: 0.6em;
+}
+
+dl dt {
+  float: left;
+  padding: 0 1%;
+  width: 50%;
+  margin-top: 0;
+  font-size: 0.6em;
+  font-weight: 700;
+}
+
+.hourly-container {
+  display: grid;
+  grid-template-areas:
+  "auto auto auto auto"
+  "auto auto auto auto"
+  "auto auto auto auto";
+  justify-content: space-around;
+  grid-row-gap: 30px;
+  grid-column-gap: 30px;
+  margin-top: 15px;
+}
+
+.daily-container {
+  display: grid;
+  justify-content: space-between;
+  grid-template-rows: auto auto auto auto auto auto auto;
+  grid-template-areas:
+    "daily-day daily-status daily-precip daily-high daily-low";
+}
+
+.daily-day {
+  grid-area: daily-day;
+}
+
+.daily-status {
+  grid-area: daily-status;
+}
+
+.daily-precip {
+  grid-area: daily-precip;
+}
+
+.daily-high {
+  grid-area: daily-high;
+}
+
+.daily-low {
+  grid-area: daily-low;
+}
+
+.hourly-item {
+  text-align: center;
+}
+
+.hourly-item h1 {
+  margin: 0 0 8px 0;
+}
+
 .sidebar {
   height: 100%;
   width: 15%;
@@ -76,8 +140,8 @@ strong {
   background-color: rgba(0,0,0,0.6);
   display: inline-grid;
   justify-content: center;
-  grid-template-columns: 40% 40%;
-  grid-template-rows: 75px 175px 150px 150px;
+  grid-template-columns: 45% 45%;
+  grid-template-rows: 75px 175px 440px 150px;
   grid-template-areas:
     "search-bar search-bar"
     "current-summary current-detailed"
@@ -88,7 +152,7 @@ strong {
 }
 
 .main-items {
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   background-color: rgba(37,40,43,0.8);
   box-shadow:  3px 10px 10px rgba(0,0,0,0.8);
@@ -121,6 +185,7 @@ strong {
   display: grid;
   grid-template-columns: 55% 45%;
   padding: 10px;
+  align-items: center;
 }
 
 .summary-left {
@@ -133,22 +198,6 @@ strong {
 
 .details-right {
   justify-self: center;
-}
-
-dl dd {
-  padding: 0 1%;
-  float: right;
-  width: 40%;
-  font-size: 0.6em;
-}
-
-dl dt {
-  float: left;
-  padding: 0 1%;
-  width: 50%;
-  margin-top: 0;
-  font-size: 0.6em;
-  font-weight: 700;
 }
 
 #location-search-field {
@@ -189,7 +238,7 @@ dl dt {
 }
 
 #favorite-link {
-  font-size: 0.5em;
+  font-size: 0.6em;
   text-decoration: none;
   color: #71c4d9;
 }
