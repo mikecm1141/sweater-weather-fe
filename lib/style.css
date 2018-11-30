@@ -19,18 +19,19 @@ body {
   overflow-x: hidden;
   padding-top: 20px;
   display: inline-block;
+  box-shadow: inset -5px 0 15px rgba(0,0,0,0.6);
 }
 
 .sidebar a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 1em;
-  color: #818181;
+  color: #c4e2f2;
   display: block;
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+  color: #add876;
 }
 
 .main {
@@ -38,12 +39,12 @@ body {
   width: 85%;
   margin-left: 15%;
   position: fixed;
-  padding: 10px 10px;
+  padding: 10px 10px 10px 10px;
   background-color: rgba(0,0,0,0.6);
   display: inline-grid;
   justify-content: center;
   grid-template-columns: 47% 47%;
-  grid-template-rows: 75px auto;
+  grid-template-rows: 75px  150px 150px 150px;
   grid-template-areas:
     "search-bar search-bar"
     "current-summary current-detailed"
@@ -55,18 +56,49 @@ body {
 
 .main-items {
   padding: 10px;
-  border: 1px solid black;
   border-radius: 10px;
-  background-color: rgba(37,40,43,0.7);
-  align-self: start;
+  background-color: rgba(37,40,43,0.8);
+  box-shadow:  3px 10px 10px rgba(0,0,0,0.8);
 }
 
 .main-items h1 {
   color: #f69547;
+  font-size: 0.8em;
+}
+
+.form-btn {
+  display: inline-block;
+  font-size: 1em;
+  width: 5%;
+  background-color: rgba(246,149,71,0.5);
+  border: 0;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.form-btn:hover {
+  background-color: rgba(246,149,71,1);
+}
+
+#location-search-field {
+  width: 93%;
+  display: inline-block;
+  font-size: 1em;
+  padding: 5px;
+  background-color: rgba(37,40,43,0.0);
+  color: #c0c0c0;
+  border: none;
+  border-bottom: 1px solid #c0c0c0;
+  border-radius: 1px;
 }
 
 #search-bar {
   grid-area: search-bar;
+  align-self: center;
+}
+
+#search-img {
+  width: 20px;
 }
 
 #current-summary {
@@ -83,8 +115,4 @@ body {
 
 #daily {
   grid-area: daily;
-}
-
-#location-search-field {
-  width: 90%;
 }

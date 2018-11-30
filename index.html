@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   <link rel='stylesheet' type='text/css' href='lib/reset.css'>
   <link rel='stylesheet' type='text/css' href='lib/style.css'>
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet"> 
@@ -16,11 +16,14 @@
 
   <div class="main">
     <section id="search-bar" class="main-items">
-      <input type="text" id="location-search-field">
+      <input type="text" id="location-search-field" placeholder="Enter location to view weather">
+      <button class="form-btn">
+        <img src="../assets/search.png" id="search-img" />
+      </button>
     </section>
 
     <section id="current-summary" class="main-items">
-      <h1>Current Summary</h1>
+      <h1>Denver, CO</h1>
     </section>
 
     <section id="current-detailed" class="main-items">
