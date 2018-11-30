@@ -8,6 +8,39 @@ body {
   font-size: 26px;
 }
 
+h1 {
+  color: #f69547;
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #f69547;
+}
+
+h3 {
+  font-size: 1em;
+  margin: 4px 0 4px 0;
+}
+
+h4 {
+  font-size: 0.6em;
+  color: #f69547;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 0.7em;
+}
+
+h6 {
+  font-size: 0.6em;
+}
+
+strong {
+  font-weight: 700;
+}
+
 .sidebar {
   height: 100%;
   width: 15%;
@@ -43,15 +76,15 @@ body {
   background-color: rgba(0,0,0,0.6);
   display: inline-grid;
   justify-content: center;
-  grid-template-columns: 47% 47%;
-  grid-template-rows: 75px  150px 150px 150px;
+  grid-template-columns: 40% 40%;
+  grid-template-rows: 75px 175px 150px 150px;
   grid-template-areas:
     "search-bar search-bar"
     "current-summary current-detailed"
     "hourly hourly"
     "daily daily";
-  grid-column-gap: 10px;
-  grid-row-gap: 15px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
 }
 
 .main-items {
@@ -59,11 +92,7 @@ body {
   border-radius: 10px;
   background-color: rgba(37,40,43,0.8);
   box-shadow:  3px 10px 10px rgba(0,0,0,0.8);
-}
-
-.main-items h1 {
-  color: #f69547;
-  font-size: 0.8em;
+  color: #c4e2f2;
 }
 
 .form-btn {
@@ -78,6 +107,48 @@ body {
 
 .form-btn:hover {
   background-color: rgba(246,149,71,1);
+}
+
+.current-summary {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-items: center;
+  align-content: center;
+}
+
+.current-details {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  padding: 10px;
+}
+
+.summary-left {
+  text-align: center;
+}
+
+.details-left {
+  justify-self: center;
+}
+
+.details-right {
+  justify-self: center;
+}
+
+dl dd {
+  padding: 0 1%;
+  float: right;
+  width: 40%;
+  font-size: 0.6em;
+}
+
+dl dt {
+  float: left;
+  padding: 0 1%;
+  width: 50%;
+  margin-top: 0;
+  font-size: 0.6em;
+  font-weight: 700;
 }
 
 #location-search-field {
@@ -115,4 +186,25 @@ body {
 
 #daily {
   grid-area: daily;
+}
+
+#favorite-link {
+  font-size: 0.5em;
+  text-decoration: none;
+  color: #71c4d9;
+}
+
+#favorite-link:hover {
+  color: #add876;
+}
+
+#weather-status {
+  margin-bottom: 10px;
+  color: #f69547;
+}
+
+#detail-icon {
+  font-size: 1.5em;
+  display: block;
+  margin-bottom: 5px;
 }

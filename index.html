@@ -5,6 +5,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   <link rel='stylesheet' type='text/css' href='lib/reset.css'>
   <link rel='stylesheet' type='text/css' href='lib/style.css'>
+  <link rel='stylesheet' type='text/css' href='lib/weather-icons.min.css'>
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet"> 
   <title>Sweater Weather</title>
 </head>
@@ -22,12 +23,46 @@
       </button>
     </section>
 
-    <section id="current-summary" class="main-items">
-      <h1>Denver, CO</h1>
+    <section id="current-summary" class="main-items current-summary">
+      <div class="summary-left">
+        <h5><i class="wi wi-night-partly-cloudy"></i> Partly Cloudly</h5>
+        <h1>38&deg;</h1>
+        <h5>High: 80&deg; Low: -15&deg;</h5>
+      </div>
+
+      <div class="summary-right">
+        <h2>Denver, CO</h2>
+        <h3>United States</h3>
+        <h5>11:11 PM, 10/31</h5>
+        <a href="#" id="favorite-link">Add to Favorites</a>
+      </div>
     </section>
 
     <section id="current-detailed" class="main-items">
-      <h1>Current Detailed</h1>
+      <h4>Details</h4>
+      <div class="current-details">
+        <div class="details-left">
+          <center>
+            <span id="detail-icon"><i class="wi wi-night-partly-cloudy"></i></span>
+            <h5 id="weather-status">Partly Cloudly</h5>
+          </center>
+        <h6><strong>Today:</strong> Mostly cloudly until afternoon.</h6>
+        <h6><strong>Tonight:</strong> Partly cloudly starting tonight, continuing until tomorrow morning.</h6>
+        </div>
+
+        <div class="details-right">
+          <dl>
+            <dt>Feels Like</dt>
+            <dd>30 &deg;</dd>
+            <dt>Humidity</dt>
+            <dd>75%</dd>
+            <dt>Visibility</dt>
+            <dd>10.00 miles</dd>
+            <dt>UV Index</dt>
+            <dd>2 (low)</dd>
+          </dl>
+        </div>
+      </div>
     </section>
 
     <section id="hourly" class="main-items">
