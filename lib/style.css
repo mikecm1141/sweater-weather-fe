@@ -282,6 +282,10 @@ dl dt {
   align-items: center;
 }
 
+#current-location {
+  text-transform: capitalize;
+}
+
 #weather-status {
   margin-bottom: 10px;
   color: #f69547;

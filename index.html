@@ -71,23 +71,25 @@
 
     <div class="main">
       <section id="search-bar" class="main-items">
-        <input type="text" class="text-input" placeholder="Enter location to view weather">
-        <button class="form-btn">
+        <input type="text" id="location" class="text-input" placeholder="Enter location to view weather">
+        <button class="form-btn" id="location-search">
           <img src="../assets/search.png" id="search-img" />
         </button>
       </section>
 
       <section id="current-summary" class="main-items current-summary">
         <div class="summary-left">
-          <h5><i class="wi wi-night-partly-cloudy"></i> Partly Cloudly</h5>
-          <h1>38&deg;</h1>
-          <h5>High: 80&deg; Low: -15&deg;</h5>
+          <h5><i class="wi wi-night-partly-cloudy"></i> <span id="currently-summary">Partly Cloudly</span></h5>
+          <h1><span id="currently-temperature">38</span>&deg;</h1>
+          <h5>High: 
+            <span id="daily-temperature-high">80</span>&deg; Low: <span id="daily-temperature-low">-15</span>&deg;
+          </h5>
         </div>
 
         <div class="summary-right">
-          <h2>Denver, CO</h2>
+          <h2 id="current-location">Nope, CO</h2>
           <h3>United States</h3>
-          <h5>11:11 PM, 10/31</h5>
+          <h5 id="current-time">11:11 PM, 10/31</h5>
           <a href="#" id="favorite-link">Add to Favorites</a>
         </div>
       </section>
@@ -360,7 +362,6 @@
   <script
     src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
   </script>
-  <script src="lib/index.js" type="text/javascript"></script>
   <script src="lib/modal.js" type="text/javascript"></script>
   <script src="main.bundle.js"></script>
 </body>
