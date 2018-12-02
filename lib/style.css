@@ -199,6 +199,18 @@ i {
   color: #add876;
 }
 
+.sidebar h2 {
+  font-size: 1em;
+  color: #add876;
+  margin-left: 5px;
+}
+
+.sidebar h3 {
+  font-size: 0.8em;
+  color: #add876;
+  margin-left: 5px;
+}
+
 /* main content area */
 
 .container {
