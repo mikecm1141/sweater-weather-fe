@@ -239,18 +239,22 @@ dl dt {
 
 #current-summary {
   grid-area: current-summary;
+  display: none;
 }
 
 #current-detailed {
   grid-area: current-detailed;
+  display: none;
 }
 
 #hourly {
   grid-area: hourly;
+  display: none;
 }
 
 #daily {
   grid-area: daily;
+  display: none;
 }
 
 /* current weather */

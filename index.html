@@ -79,7 +79,7 @@
 
       <section id="current-summary" class="main-items current-summary">
         <div class="summary-left">
-          <h5><i class="wi wi-night-partly-cloudy"></i> <span id="currently-summary">Partly Cloudly</span></h5>
+          <h5><i class="wi wi-night-partly-cloudy"></i> <span class="currently-summary">Partly Cloudly</span></h5>
           <h1><span id="currently-temperature">38</span>&deg;</h1>
           <h5>High: 
             <span id="daily-temperature-high">80</span>&deg; Low: <span id="daily-temperature-low">-15</span>&deg;
@@ -99,263 +99,42 @@
           <div class="details-left">
             <center>
               <span id="detail-icon"><i class="wi wi-night-partly-cloudy"></i></span>
-              <h5 id="weather-status">Partly Cloudly</h5>
+              <h5 id="weather-status" class="currently-summary">Partly Cloudly</h5>
             </center>
-          <h6 style="margin-bottom: 5px;"><strong>Today:</strong> Mostly cloudly until afternoon.</h6>
-          <h6><strong>Tonight:</strong> Partly cloudly starting tonight, continuing until tomorrow morning.</h6>
+          <h6 style="margin-bottom: 5px;">
+            <span id="summary-daily">Mostly cloudly until afternoon.</span>
+          </h6>
           </div>
 
           <div class="details-right">
             <dl>
               <dt>Feels Like</dt>
-              <dd>30 &deg;</dd>
+              <dd id="currently-apparent-temperature">30 &deg;</dd>
               <dt>Humidity</dt>
-              <dd>75%</dd>
+              <dd id="currently-humidity">75%</dd>
               <dt>Visibility</dt>
-              <dd>10.00 miles</dd>
+              <dd id="currently-visibility">10.00 miles</dd>
               <dt>UV Index</dt>
-              <dd>2 (low)</dd>
+              <dd id="currently-uv-index">2 (low)</dd>
               <dt>Precip. Prob</dt>
-              <dd>0%</dd>
+              <dd id="currently-precip-probability">0%</dd>
               <dt>Precip. Intensity</dt>
-              <dd>0</dd>
+              <dd id="currently-precip-intensity">0</dd>
               <dt>Wind Speed</dt>
-              <dd><i class="wi wi-wind towards-35-deg"></i> 2.64</dd>
+              <dd>
+                <i class="wi wi-wind towards-35-deg"></i> <span id="currently-wind-speed">2.64</span>
+              </dd>
             </dl>
           </div>
         </div>
       </section>
-
+      
       <section id="hourly" class="main-items">
         <div class="hourly-container">
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
-
-          <div class="hourly-item">
-            <h5>11 PM</h5>
-            <h1><i class="wi wi-night-partly-cloudy"></i></h1>
-            <h5>80&deg;</h5>
-          </div>
         </div>
       </section>
 
       <section id="daily" class="main-items">
-        <div class="daily-container">
-          <div class="daily-day">
-            <h5>Wednesday</h5>
-          </div>
-
-          <div class="daily-status">
-            <i class="wi wi-day-sunny"></i><h5>Sunny</h5>
-          </div>
-
-          <div class="daily-precip">
-            <i class="wi wi-raindrop"></i><h5>90%</h5>
-          </div>
-
-          <div class="daily-high">
-            <i class="wi wi-thermometer"></i> <h5>75 &deg;</h5>
-          </div>
-
-          <div class="daily-low">
-            <i class="wi wi-thermometer-exterior"></i> <h5>55 &deg;</h5>
-          </div>
-        </div>
-
-        <div class="daily-container">
-          <div class="daily-day">
-            <h5>Wednesday</h5>
-          </div>
-
-          <div class="daily-status">
-            <i class="wi wi-day-sunny"></i><h5>Sunny</h5>
-          </div>
-
-          <div class="daily-precip">
-            <i class="wi wi-raindrop"></i><h5>90%</h5>
-          </div>
-
-          <div class="daily-high">
-            <i class="wi wi-thermometer"></i> <h5>75 &deg;</h5>
-          </div>
-
-          <div class="daily-low">
-            <i class="wi wi-thermometer-exterior"></i> <h5>55 &deg;</h5>
-          </div>
-        </div>
-
-        <div class="daily-container">
-          <div class="daily-day">
-            <h5>Wednesday</h5>
-          </div>
-
-          <div class="daily-status">
-            <i class="wi wi-day-sunny"></i><h5>Sunny</h5>
-          </div>
-
-          <div class="daily-precip">
-            <i class="wi wi-raindrop"></i><h5>90%</h5>
-          </div>
-
-          <div class="daily-high">
-            <i class="wi wi-thermometer"></i> <h5>75 &deg;</h5>
-          </div>
-
-          <div class="daily-low">
-            <i class="wi wi-thermometer-exterior"></i> <h5>55 &deg;</h5>
-          </div>
-        </div>
-
-        <div class="daily-container">
-          <div class="daily-day">
-            <h5>Wednesday</h5>
-          </div>
-
-          <div class="daily-status">
-            <i class="wi wi-day-sunny"></i><h5>Sunny</h5>
-          </div>
-
-          <div class="daily-precip">
-            <i class="wi wi-raindrop"></i><h5>90%</h5>
-          </div>
-
-          <div class="daily-high">
-            <i class="wi wi-thermometer"></i> <h5>75 &deg;</h5>
-          </div>
-
-          <div class="daily-low">
-            <i class="wi wi-thermometer-exterior"></i> <h5>55 &deg;</h5>
-          </div>
-        </div>
-
-        <div class="daily-container">
-          <div class="daily-day">
-            <h5>Wednesday</h5>
-          </div>
-
-          <div class="daily-status">
-            <i class="wi wi-day-sunny"></i><h5>Sunny</h5>
-          </div>
-
-          <div class="daily-precip">
-            <i class="wi wi-raindrop"></i><h5>90%</h5>
-          </div>
-
-          <div class="daily-high">
-            <i class="wi wi-thermometer"></i> <h5>75 &deg;</h5>
-          </div>
-
-          <div class="daily-low">
-            <i class="wi wi-thermometer-exterior"></i> <h5>55 &deg;</h5>
-          </div>
-        </div>
-
-        <div class="daily-container">
-          <div class="daily-day">
-            <h5>Wednesday</h5>
-          </div>
-
-          <div class="daily-status">
-            <i class="wi wi-day-sunny"></i><h5>Sunny</h5>
-          </div>
-
-          <div class="daily-precip">
-            <i class="wi wi-raindrop"></i><h5>90%</h5>
-          </div>
-
-          <div class="daily-high">
-            <i class="wi wi-thermometer"></i> <h5>75 &deg;</h5>
-          </div>
-
-          <div class="daily-low">
-            <i class="wi wi-thermometer-exterior"></i> <h5>55 &deg;</h5>
-          </div>
-        </div>
-
-        <div class="daily-container">
-          <div class="daily-day">
-            <h5>Wednesday</h5>
-          </div>
-
-          <div class="daily-status">
-            <i class="wi wi-day-sunny"></i><h5>Sunny</h5>
-          </div>
-
-          <div class="daily-precip">
-            <i class="wi wi-raindrop"></i><h5>90%</h5>
-          </div>
-
-          <div class="daily-high">
-            <i class="wi wi-thermometer"></i> <h5>75 &deg;</h5>
-          </div>
-
-          <div class="daily-low">
-            <i class="wi wi-thermometer-exterior"></i> <h5>55 &deg;</h5>
-          </div>
-        </div>
       </section>
     </div>
   </div>
