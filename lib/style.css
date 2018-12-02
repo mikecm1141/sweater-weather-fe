@@ -211,6 +211,14 @@ i {
   margin-left: 5px;
 }
 
+#logged-out-menu {
+  display: inherit;
+}
+
+#logged-in-menu {
+  display: none;
+}
+
 /* main content area */
 
 .container {
