@@ -51,37 +51,10 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	// This file is in the entry point in your webpack config.
-	var checkCookies = function checkCookies() {
-	  if (document.cookie !== '') {
-	    var username = getCookie('username');
-	    var apiKey = getCookie('apiKey');
-
-	    loginUser(apiKey, username);
-	  } else {
-	    $('#logged-out-menu').css('display', 'inherit');
-	    $('#logged-in-menu').css('display', 'none');
-	  }
-	};
-
-	var getCookie = function getCookie(name) {
-	  var value = "; " + document.cookie;
-	  var parts = value.split("; " + name + "=");
-	  if (parts.length == 2) return parts.pop().split(";").shift();
-	};
-
-	var logout = function logout() {
-	  document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
-	  document.cookie = 'apiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
-	  checkCookies();
-	};
-
-	$('#logout-btn').on('click', function () {
-	  logout();
-	});
 
 	var url = 'http://sweater-weather1141.herokuapp.com';
 	var weatherData = {};
-
+	var lastLookup = '';
 	var weatherIcons = {
 	  'clear-day': 'wi-day-sunny',
 	  'clear-night': 'wi-night-clear',
@@ -94,8 +67,100 @@
 	  'partly-cloudy-day': 'wi-day-cloudy',
 	  'partly-cloudy-night': 'wi-night-cloudy'
 
-	  // Weather Data class
+	  // ***** Cookie Functions *****
+
+	};var checkCookies = function checkCookies() {
+	  var username = getCookie('username');
+	  var apiKey = getCookie('apiKey');
+
+	  if (username !== undefined && apiKey !== undefined) {
+	    loginUser(apiKey, username);
+	  } else {
+	    $('#logged-out-menu').css('display', 'inherit');
+	    $('#logged-in-menu').css('display', 'none');
+	    $('#favorite-link').css('display', 'none');
+	  }
+
+	  var lastLookup = getCookie('lastLookup');
+
+	  if (lastLookup !== undefined) {
+	    getWeatherData(lastLookup);
+	  }
 	};
+
+	var getCookie = function getCookie(name) {
+	  var value = "; " + document.cookie;
+	  var parts = value.split("; " + name + "=");
+	  if (parts.length == 2) return parts.pop().split(";").shift();
+	};
+
+	// ***** Authorization Functions
+
+	var logout = function logout() {
+	  document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+	  document.cookie = 'apiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+	  $('#favorites').html('');
+
+	  checkCookies();
+	};
+
+	var loginUser = function loginUser(apiKey, username) {
+	  document.cookie = 'username=' + username + '; expires=Thu, 01 Jan 2020 00:00:00 UTC; path=/';
+	  document.cookie = 'apiKey=' + apiKey + '; expires=Thu, 01 Jan 2020 00:00:00 UTC; path=/';
+
+	  $('#login-modal').css('display', 'none');
+	  $('#register-modal').css('display', 'none');
+	  $('#logged-out-menu').css('display', 'none');
+	  $('#logged-in-menu').css('display', 'inherit');
+	  $('#favorite-link').css('display', 'inherit');
+	  $('#logged-in-menu').children("h3").text(username);
+
+	  getFavorites();
+	};
+
+	var authenticateUser = function authenticateUser(username, password) {
+	  var formData = new FormData();
+
+	  formData.append('email', username);
+	  formData.append('password', password);
+
+	  fetch(url + '/api/v1/sessions', {
+	    method: 'POST',
+	    body: formData
+	  }).then(function (response) {
+	    return response.json();
+	  }).then(function (response) {
+	    return loginUser(response['data']['attributes']['api_key'], username);
+	  }).catch(function (error) {
+	    return console.error({ error: error });
+	  });
+	};
+
+	// ***** Register User *****
+
+	var registerUser = function registerUser(username, password, passwordConfirmation) {
+	  var formData = new FormData();
+
+	  formData.append('email', username);
+	  formData.append('password', password);
+	  formData.append('password_confirmation', passwordConfirmation);
+
+	  fetch(url + '/api/v1/users', {
+	    method: 'POST',
+	    body: formData
+	  }).catch(function (error) {
+	    return console.log({ error: error });
+	  }).then(function (response) {
+	    return response.json();
+	  }).then(function (apiKey) {
+	    return loginUser(apiKey['data']['attributes']['api_key'], username);
+	  });
+	};
+
+	// ***** Custom Classes *****
+
+	// Weather Data class
+
 	var WeatherData = function () {
 	  function WeatherData(data) {
 	    _classCallCheck(this, WeatherData);
@@ -127,6 +192,9 @@
 
 	  return WeatherData;
 	}();
+
+	// Class that formats dates based on a UNIX timestamp input
+
 
 	var DateFormatter = function () {
 	  function DateFormatter(timestamp) {
@@ -192,10 +260,15 @@
 	  return DateFormatter;
 	}();
 
+	// ***** Weather Lookup Functions *****
+
 	// GET request for weather data based on inputted location
 
 
 	var getWeatherData = function getWeatherData(location) {
+	  lastLookup = location;
+	  document.cookie = 'lastLookup=' + lastLookup;
+
 	  fetch(url + '/api/v1/forecast?location=' + location).catch(function (error) {
 	    return console.error({ error: error });
 	  }).then(function (response) {
@@ -254,34 +327,71 @@
 	  $('#daily').css('display', 'inherit');
 	};
 
-	var authenticateUser = function authenticateUser(username, password) {
-	  var formData = new FormData();
+	// ***** User Favorite Functions *****
 
-	  formData.append('email', username);
-	  formData.append('password', password);
-
-	  fetch(url + '/api/v1/sessions', {
-	    method: 'POST',
-	    body: formData
-	  }).then(function (response) {
+	// API call to get user favorites
+	var getFavorites = function getFavorites() {
+	  fetch(url + '/api/v1/favorites?api_key=' + getCookie('apiKey')).then(function (response) {
 	    return response.json();
 	  }).then(function (response) {
-	    return loginUser(response['data']['attributes']['api_key'], username);
+	    return displayFavorites(response);
 	  }).catch(function (error) {
+	    return console.log({ error: error });
+	  });
+	};
+
+	// Function that adds user favorites based on location
+	var addToFavorites = function addToFavorites(location) {
+	  var formData = new FormData();
+
+	  formData.append('location', lastLookup);
+	  formData.append('api_key', getCookie('apiKey'));
+
+	  fetch(url + '/api/v1/favorites', {
+	    method: 'POST',
+	    body: formData
+	  }).then(alert('Added to Favorites')).then(getFavorites()).catch(function (error) {
 	    return console.error({ error: error });
 	  });
 	};
 
-	var loginUser = function loginUser(apiKey, username) {
-	  document.cookie = 'username=' + username + '; expires=Thu, 01 Jan 2020 00:00:00 UTC; path=/';
-	  document.cookie = 'apiKey=' + apiKey + '; expires=Thu, 01 Jan 2020 00:00:00 UTC; path=/';
+	// Takes an object of user favorites and displays them on the page
+	var displayFavorites = function displayFavorites(favorites) {
+	  $('#favorites').html('');
 
-	  $('#login-modal').css('display', 'none');
+	  var favoriteList = favorites['data'];
 
-	  $('#logged-out-menu').css('display', 'none');
-	  $('#logged-in-menu').css('display', 'inherit');
-	  $('#logged-in-menu').children("h3").text(username);
+	  for (var i = 0; i < favoriteList.length; i++) {
+	    $('#favorites').append('\n      <a href="javascript:void(0)" class="remove-images"><img id="' + favoriteList[i]['meta']['data']['id'] + '" src="./assets/subtract.svg"/></a>\n      <a href="javascript:void(0)" class="favorite-links" id="' + favoriteList[i]['meta']['data']['id'] + '">' + favoriteList[i]['meta']['data']['id'] + '</a><br/>\n    ');
+	  }
 	};
+
+	var removeFavorite = function removeFavorite(location) {
+	  var formData = new FormData();
+	  location = location.replace(/  +/g, ' ');
+
+	  formData.append('location', location);
+	  formData.append('api_key', getCookie('apiKey'));
+
+	  fetch(url + '/api/v1/favorites', {
+	    method: 'DELETE',
+	    body: formData
+	  }).then(alert('Removed ' + location + ' from favorites')).then(getFavorites).catch(function (error) {
+	    return console.log({ error: error });
+	  });
+	};
+
+	// ***** EVENT LISTENERS *****
+
+	// Event listener for displaying favorite by clicking on its link
+	$('#favorites').on('click', '.favorite-links', function (event) {
+	  getWeatherData(event.target.id);
+	});
+
+	// Event listener for removing a favorite location
+	$('#favorites').on('click', '.remove-images', function (event) {
+	  removeFavorite(event.target.id);
+	});
 
 	// Event listener for login form
 	$('#login-form').submit(function (event) {
@@ -291,6 +401,25 @@
 	  var password = $('#pass-login').val();
 
 	  authenticateUser(username, password);
+	});
+
+	// Event listener for register form
+	$('#register-form').submit(function (event) {
+	  $('#register-error').html('');
+
+	  event.preventDefault();
+
+	  var username = $('#user-register').val();
+	  var password = $('#pass-register').val();
+	  var passwordConfirmation = $('#confirm-pass-register').val();
+
+	  if (password === '' || passwordConfirmation === '' || username === '') {
+	    $('#register-error').text('All fields are required.');
+	  } else if (password !== passwordConfirmation) {
+	    $('#register-error').text('Passwords must match.');
+	  } else {
+	    registerUser(username, password, passwordConfirmation);
+	  }
 	});
 
 	// Event listener for a new location search, for button click
@@ -305,6 +434,16 @@
 	    var location = $('#location').val();
 	    getWeatherData(location);
 	  }
+	});
+
+	// Event listener for adding to favorites
+	$('#favorite-link').on('click', function () {
+	  addToFavorites(lastLookup);
+	});
+
+	// Event listener for logging out
+	$('#logout-btn').on('click', function () {
+	  logout();
 	});
 
 	checkCookies();
