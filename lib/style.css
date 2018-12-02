@@ -59,6 +59,10 @@ dl dt {
   font-weight: 700;
 }
 
+i {
+  margin-bottom: 5px;
+}
+
 /* Modals */
 
 .modal {
