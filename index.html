@@ -20,7 +20,7 @@
       </div>
       <div class="modal-body">
         <form id="login-form">
-          <div class="form-grid-container">
+          <div class="form-login-grid-container">
             <div class="form-grid-item" id="username-login">
               <input type="text" id="user-login" class="text-input" placeholder="Email Address" />
             </div>
@@ -47,19 +47,26 @@
         <h2>Register</h2>
       </div>
       <div class="modal-body">
-        <div class="form-grid-container">
-          <div class="form-grid-item" id="username-register">
-            <input type="text" id="user-register" class="text-input" placeholder="Email Address" />
-          </div>
+        <form id="register-form">
+          <div class="form-register-grid-container">
+            <div class="form-grid-item" id="username-register">
+              <input type="text" id="user-register" class="text-input email-input-large" placeholder="Email Address" />
+            </div>
 
-          <div class="form-grid-item" id="password-register">
-            <input type="password" id="pass-register" class="text-input" placeholder="Password" />
-          </div>
+            <div class="form-grid-item" class="password-register">
+              <input type="password" id="pass-register" class="text-input" placeholder="Password" />
+            </div>
 
-          <div class="form-grid-item" id="submit-register">
-            <input type="submit" class="form-btn large" value="Register"/>
+            <div class="form-grid-item" class="password-register">
+              <input type="password" id="confirm-pass-register" class="text-input" placeholder="Confirm Password" />
+            </div>
+
+            <div class="form-grid-item" id="submit-register">
+              <span id="register-error"></span>
+              <input type="submit" class="form-btn large" value="Register"/>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

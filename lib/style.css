@@ -100,6 +100,11 @@ i {
   animation-duration: 0.4s
 }
 
+#register-error {
+  color: red;
+  font-size: 0.7em;
+}
+
 @keyframes animatetop {
   from {
     top: -300px; opacity: 0
@@ -123,10 +128,24 @@ i {
   border-radius: 1px;
 }
 
-.form-grid-container {
+.email-input-large {
+  width: 96%;
+}
+
+.form-login-grid-container {
   display: grid;
   grid-template-areas:
     "username password"
+    ". submit";
+  justify-content: space-between;
+  grid-row-gap: 10px;
+}
+
+.form-register-grid-container {
+  display: grid;
+  grid-template-areas:
+    "username username"
+    "password password"
     ". submit";
   justify-content: space-between;
   grid-row-gap: 10px;
@@ -149,6 +168,10 @@ i {
   color: #111111;
 }
 
+.password-register {
+  grid-area: password;
+}
+
 #username-login {
   grid-area: username;
 }
@@ -164,10 +187,6 @@ i {
 
 #username-register {
   grid-area: username;
-}
-
-#password-register {
-  grid-area: password;
 }
 
 #submit-register {
