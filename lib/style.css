@@ -200,6 +200,7 @@ dl dt {
 .container {
   display: grid;
   grid-template-columns: 15% 85%;
+  align-items: stretch;
 }
 
 .main {
@@ -239,18 +240,22 @@ dl dt {
 
 #current-summary {
   grid-area: current-summary;
+  display: none;
 }
 
 #current-detailed {
   grid-area: current-detailed;
+  display: none;
 }
 
 #hourly {
   grid-area: hourly;
+  display: none;
 }
 
 #daily {
   grid-area: daily;
+  display: none;
 }
 
 /* current weather */
@@ -280,6 +285,10 @@ dl dt {
   grid-template-columns: 55% 45%;
   padding: 10px;
   align-items: center;
+}
+
+#current-location {
+  text-transform: capitalize;
 }
 
 #weather-status {
@@ -333,6 +342,7 @@ dl dt {
   justify-content: space-around;
   align-items: center;
   grid-template-rows: auto auto auto auto auto auto auto;
+  grid-template-columns: 15% 45% 10% 10% 10%;
   grid-template-areas:
     "daily-day daily-status daily-precip daily-high daily-low";
 }
