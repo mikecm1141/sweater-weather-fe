@@ -200,6 +200,7 @@ dl dt {
 .container {
   display: grid;
   grid-template-columns: 15% 85%;
+  align-items: stretch;
 }
 
 .main {
@@ -341,6 +342,7 @@ dl dt {
   justify-content: space-around;
   align-items: center;
   grid-template-rows: auto auto auto auto auto auto auto;
+  grid-template-columns: 15% 45% 10% 10% 10%;
   grid-template-areas:
     "daily-day daily-status daily-precip daily-high daily-low";
 }
