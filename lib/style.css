@@ -59,6 +59,10 @@ dl dt {
   font-weight: 700;
 }
 
+i {
+  margin-bottom: 5px;
+}
+
 /* Modals */
 
 .modal {
@@ -193,6 +197,26 @@ dl dt {
 
 .sidebar a:hover {
   color: #add876;
+}
+
+.sidebar h2 {
+  font-size: 1em;
+  color: #add876;
+  margin-left: 5px;
+}
+
+.sidebar h3 {
+  font-size: 0.8em;
+  color: #add876;
+  margin-left: 5px;
+}
+
+#logged-out-menu {
+  display: inherit;
+}
+
+#logged-in-menu {
+  display: none;
 }
 
 /* main content area */
