@@ -52,7 +52,7 @@
 
 	// This file is in the entry point in your webpack config.
 
-	var url = 'http://sweater-weather1141.herokuapp.com';
+	var url = 'https://sweater-weather1141.herokuapp.com';
 	var weatherData = {};
 	var lastLookup = '';
 	var weatherIcons = {
