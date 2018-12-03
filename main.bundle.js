@@ -78,7 +78,6 @@
 	  } else {
 	    $('#logged-out-menu').css('display', 'inherit');
 	    $('#logged-in-menu').css('display', 'none');
-	    $('#favorite-link').css('display', 'none');
 	  }
 
 	  var lastLookup = getCookie('lastLookup');
@@ -298,24 +297,13 @@
 	var updateCurrentData = function updateCurrentData() {
 	  var stringTime = new DateFormatter(weatherData.currentForecast()['time']);
 
-	  $('#summary-icon').addClass(weatherIcons[weatherData.currentForecast()['icon']]);
-	  $('#details-icon').addClass(weatherIcons[weatherData.currentForecast()['icon']]);
+	  $("#current-summary").html('');
+	  $('#current-summary').append('\n    <div class="summary-left">\n      <h5>\n        <i id="summary-icon ' + weatherIcons[weatherData.currentForecast()['icon']] + '" class="wi"></i> \n        <span class="currently-summary">' + weatherData.currentForecast()['summary'] + '</span>\n      </h5>\n      <h1><span id="currently-temperature">' + Math.floor(weatherData.currentForecast()['temperature']) + '</span>&deg;</h1>\n      <h5>\n        High: ' + Math.floor(weatherData.dailyForecast()['data'][0]['temperatureHigh']) + ' &deg;\n        Low: ' + Math.floor(weatherData.dailyForecast()['data'][0]['temperatureLow']) + ' &deg;\n      </h5>\n    </div>\n\n    <div class="summary-right">\n      <h2 id="current-location">' + weatherData.currentLocation() + '</h2>\n      <h3>United States</h3>\n      <h5 id="current-time">' + stringTime.currentFormat() + '</h5>\n      <a href="#" id="favorite-link">Add to Favorites</a>\n    </div>\n  ');
+
+	  $('#current-detailed').html('');
+	  $('#current-detailed').append('\n    <div class="current-details">\n      <div class="details-left">\n        <center>\n          <span id="detail-icon">\n            <i id="details-icon" class="wi ' + weatherIcons[weatherData.currentForecast()['icon']] + '"></i>\n          </span>\n          <h5 id="weather-status" class="currently-summary">Partly Cloudly</h5>\n        </center>\n      <h6 style="margin-bottom: 5px;">\n        <span id="summary-daily">' + weatherData.dailyForecast()['summary'] + '</span>\n      </h6>\n      </div>\n\n      <div class="details-right">\n        <dl>\n          <dt>Feels Like</dt>\n          <dd id="currently-apparent-temperature">\n            ' + Math.floor(weatherData.currentForecast()['apparentTemperature']) + ' &deg;\n          </dd>\n          <dt>Humidity</dt>\n          <dd id="currently-humidity">' + Math.floor(weatherData.currentForecast()['humidity'] * 100) + '%</dd>\n          <dt>Visibility</dt>\n          <dd id="currently-visibility">' + weatherData.currentForecast()['visibility'] + ' miles</dd>\n          <dt>UV Index</dt>\n          <dd id="currently-uv-index">' + weatherData.currentForecast()['uvIndex'] + '</dd>\n          <dt>Precip. Prob</dt>\n          <dd id="currently-precip-probability">' + weatherData.currentForecast()['precipProbability'] + '%</dd>\n          <dt>Precip. Intensity</dt>\n          <dd id="currently-precip-intensity">' + weatherData.currentForecast()['precipIntensity'] + '</dd>\n          <dt>Wind Speed</dt>\n          <dd>\n            <i id="wind-icon" class="wi wi-wind towards-' + weatherData.currentForecast()['windBearing'] + '-deg"></i> \n            ' + weatherData.currentForecast()['windSpeed'] + '\n          </dd>\n        </dl>\n      </div>\n    </div>\n  ');
+
 	  $('#current-summary, #current-detailed').css('display', 'inherit');
-	  $('.currently-summary').text(weatherData.currentForecast()['summary']);
-	  $('#currently-temperature').text(Math.floor(weatherData.currentForecast()['temperature']));
-	  $('#daily-temperature-high').text(Math.floor(weatherData.dailyForecast()['data'][0]['temperatureHigh']));
-	  $('#daily-temperature-low').text(Math.floor(weatherData.dailyForecast()['data'][0]['temperatureLow']));
-	  $('#current-location').text(weatherData.currentLocation());
-	  $('#current-time').text(stringTime.currentFormat());
-	  $('#summary-daily').text(weatherData.dailyForecast()['summary']);
-	  $('#wind-icon').addClass('towards-' + weatherData.currentForecast()['windBearing'] + '-deg');
-	  $('#currently-apparent-temperature').text(Math.floor(weatherData.currentForecast()['apparentTemperature']) + '°F');
-	  $('#currently-humidity').text(Math.floor(weatherData.currentForecast()['humidity'] * 100) + '%');
-	  $('#currently-visibility').text(weatherData.currentForecast()['visibility'] + ' miles');
-	  $('#currently-uv-index').text(weatherData.currentForecast()['uvIndex']);
-	  $('#currently-precip-probability').text(weatherData.currentForecast()['precipProbability'] + '%');
-	  $('#currently-precip-intensity').text(weatherData.currentForecast()['precipIntensity'] + ' in');
-	  $('#currently-wind-speed').text(weatherData.currentForecast()['windSpeed'] + ' mph');
 	};
 
 	// Update Hourly Weather
@@ -454,7 +442,7 @@
 	});
 
 	// Event listener for adding to favorites
-	$('#favorite-link').on('click', function () {
+	$('#current-summary').on('click', '#favorite-link', function () {
 	  addToFavorites(lastLookup);
 	});
 
