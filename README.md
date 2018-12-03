@@ -1,79 +1,40 @@
-# Self-Directed Front-End Start Kit
+[Live Project Link](https://mikecm1141.github.io/sweater-weather-fe/)
 
-## Initial Setup
+# Sweater Weather - Front End
 
-1. Clone this starter kit repository and rename the repository to anything you'd like in one command:
+This application uses a back-end API built using Ruby on Rails. You can visit the repository for that project [here](https://github.com/mikecm1141/sweater_weather).
 
-  ```shell
-  git clone git@github.com:turingschool-projects/self-directed-fe-starter.git <name of your choice>
-  ```
-2. Change into the new director directory.
+## Description/Purpose
 
-3. Remove the default remote (origin):
+This front-end application was built to interact with an API I made in Ruby on Rails. The application serves up weather data based on user input. It also allows users to register and login, and to favorite locations they have viewed.
 
-  ```shell
-  git remote rm origin
-  ```
+This project was built with the goal of learning more about using JavaScript to interact with an external API. It also allowed me time to practice using concepts like CSS Grid and asynchronous JavaScript.
 
-4. Create a new repository on GitHub.
+## APIs Used
 
-5. Add your new repository remote - **your remote URL and user name will be different in the command below**
+* [Dark Sky Weather API](https://darksky.net/dev)
+* [Flickr Photo Service](https://www.flickr.com/services/api/) - for background images based on location
+* [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start) - for finding latitude and longitude based on city, state input
 
-  ```shell
-  git remote add origin git@github.com:<YOUR GITHUB NAME>/<PROJECT NAME>.git
-  ```
+## Setup
+To run this project locally, `git clone` this repository to your local machine. Once in the project directory, run `npm install` to install the required node modules. `npm start` will load up a server for you to view at `http://localhost:8080`.
 
-6. Install the dependencies of the starter kit:
+## Contributors
 
-  ```shell
-  npm install
-  ```
+This project was solely built by Mike McKee with some code review by Andrew Mockett.
 
-7. Add, commit, and push up to your repository:
+## Screenshots
 
-  ```shell
-  git add .
-  git commit -m "Initial commit using starter kit"
-  git push origin master
-  ```
+![alt text](https://i.ibb.co/Pr5sGpx/main.png "Main Page")
 
-## Running the Server Locally
+Index/Main Page with weather loaded
 
-To see your code in action locally, you need to fire up a development server. Use the command:
+![alt text](https://i.ibb.co/rHbSgBn/favorites.png "Favorites")
 
-```shell
-npm start
-```
-
-Once the server is running, visit in your browser:
-
-* `http://localhost:8080/` to run your application.
-
-
-## GitHub Pages Setup
-
-This site will be served from GitHub Pages in production.
-
-In order to see your application running on production:
-
-1. From the command line, run `npm run build`.
-
-2. Commit and push your application to GitHub.
-
-3. Visit your repository on Github
-
-4. Go to Settings
-
-5. Under the Github Pages section of Options, select 'master' as your source and click `Save`
-
-Be sure to `npm run build` and commit before each push to master. A few seconds after you push up, you should be able to see your application at <https://your-github-username.github.io/project-name>.
-
+Favorite Locations with user logged in
 
 ## Built With
 
 * [JavaScript](https://www.javascript.com/)
 * [jQuery](https://jquery.com/)
-* [Express](https://expressjs.com/)
-* [Mocha](https://mochajs.org/)
-* [Chai](https://chaijs.com/)
-
+* [Weather Icons](https://erikflowers.github.io/weather-icons/)
