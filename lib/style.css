@@ -365,6 +365,7 @@ i {
   font-size: 1.5em;
   display: block;
   margin-bottom: 5px;
+  margin-top: 0;
 }
 
 #favorite-link {
