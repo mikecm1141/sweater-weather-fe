@@ -268,15 +268,14 @@ i {
   background-color: rgba(0,0,0,0.6);
   display: inline-grid;
   justify-content: center;
+  align-items: start;
   grid-template-columns: 45% 45%;
-  grid-template-rows: auto 10% auto auto;
   grid-template-areas:
     "search-bar search-bar"
     "current-summary current-detailed"
     "hourly hourly"
     "daily daily";
   grid-column-gap: 30px;
-  grid-row-gap: 30px;
   border-left: 1px solid black;
 }
 
