@@ -70,11 +70,11 @@
 	  // ***** Cookie Functions *****
 
 	};var checkCookies = function checkCookies() {
-	  var username = getCookie('username');
+	  var email = getCookie('email');
 	  var apiKey = getCookie('apiKey');
 
-	  if (username !== undefined && apiKey !== undefined) {
-	    loginUser(apiKey, username);
+	  if (email !== undefined && apiKey !== undefined) {
+	    loginUser(apiKey, email);
 	  } else {
 	    $('#logged-out-menu').css('display', 'inherit');
 	    $('#logged-in-menu').css('display', 'none');
@@ -97,15 +97,15 @@
 	// ***** Authorization Functions
 
 	var logout = function logout() {
-	  document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+	  document.cookie = 'email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
 	  document.cookie = 'apiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
 	  $('#favorites').html('');
 
 	  checkCookies();
 	};
 
-	var loginUser = function loginUser(apiKey, username) {
-	  document.cookie = 'username=' + username + '; expires=Thu, 01 Jan 2020 00:00:00 UTC; path=/';
+	var loginUser = function loginUser(apiKey, email) {
+	  document.cookie = 'email=' + email + '; expires=Thu, 01 Jan 2020 00:00:00 UTC; path=/';
 	  document.cookie = 'apiKey=' + apiKey + '; expires=Thu, 01 Jan 2020 00:00:00 UTC; path=/';
 
 	  $('#login-modal').css('display', 'none');
@@ -113,15 +113,15 @@
 	  $('#logged-out-menu').css('display', 'none');
 	  $('#logged-in-menu').css('display', 'inherit');
 	  $('#favorite-link').css('display', 'inherit');
-	  $('#logged-in-menu').children("h3").text(username);
+	  $('#logged-in-menu').children("h3").text(email);
 
 	  getFavorites();
 	};
 
-	var authenticateUser = function authenticateUser(username, password) {
+	var authenticateUser = function authenticateUser(email, password) {
 	  var formData = new FormData();
 
-	  formData.append('email', username);
+	  formData.append('email', email);
 	  formData.append('password', password);
 
 	  fetch(url + '/api/v1/sessions', {
@@ -130,7 +130,7 @@
 	  }).then(function (response) {
 	    return response.json();
 	  }).then(function (response) {
-	    return loginUser(response['data']['attributes']['api_key'], username);
+	    return loginUser(response['data']['attributes']['api_key'], email);
 	  }).catch(function (error) {
 	    return console.error({ error: error });
 	  });
@@ -138,10 +138,10 @@
 
 	// ***** Register User *****
 
-	var registerUser = function registerUser(username, password, passwordConfirmation) {
+	var registerUser = function registerUser(email, password, passwordConfirmation) {
 	  var formData = new FormData();
 
-	  formData.append('email', username);
+	  formData.append('email', email);
 	  formData.append('password', password);
 	  formData.append('password_confirmation', passwordConfirmation);
 
@@ -153,7 +153,7 @@
 	  }).then(function (response) {
 	    return response.json();
 	  }).then(function (apiKey) {
-	    return loginUser(apiKey['data']['attributes']['api_key'], username);
+	    return loginUser(apiKey['data']['attributes']['api_key'], email);
 	  });
 	};
 
@@ -275,7 +275,23 @@
 	    return response.json();
 	  }).then(function (data) {
 	    return weatherData = new WeatherData(data);
-	  }).then(updateCurrentData).then(updateHourlyData).then(updateDailyData);
+	  }).then(updateCurrentData).then(updateHourlyData).then(updateDailyData).then(fetchBackgroundImage(location));
+	};
+
+	// GETs background image
+	var fetchBackgroundImage = function fetchBackgroundImage(location) {
+	  fetch(url + '/api/v1/backgrounds?location=' + location).catch(function (error) {
+	    return console.error({ error: error });
+	  }).then(function (response) {
+	    return response.json();
+	  }).then(function (result) {
+	    return updateBackgroundImage(result['data']['attributes']['random_image_url']);
+	  });
+	};
+
+	// Updates background image
+	var updateBackgroundImage = function updateBackgroundImage(image) {
+	  $('body').css('background-image', 'url("' + image + '")');
 	};
 
 	// Update Current Weather
@@ -397,10 +413,10 @@
 	$('#login-form').submit(function (event) {
 	  event.preventDefault();
 
-	  var username = $('#user-login').val();
+	  var email = $('#user-login').val();
 	  var password = $('#pass-login').val();
 
-	  authenticateUser(username, password);
+	  authenticateUser(email, password);
 	});
 
 	// Event listener for register form
@@ -409,16 +425,16 @@
 
 	  event.preventDefault();
 
-	  var username = $('#user-register').val();
+	  var email = $('#user-register').val();
 	  var password = $('#pass-register').val();
 	  var passwordConfirmation = $('#confirm-pass-register').val();
 
-	  if (password === '' || passwordConfirmation === '' || username === '') {
+	  if (password === '' || passwordConfirmation === '' || email === '') {
 	    $('#register-error').text('All fields are required.');
 	  } else if (password !== passwordConfirmation) {
 	    $('#register-error').text('Passwords must match.');
 	  } else {
-	    registerUser(username, password, passwordConfirmation);
+	    registerUser(email, password, passwordConfirmation);
 	  }
 	});
 
